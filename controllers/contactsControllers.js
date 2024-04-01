@@ -7,10 +7,7 @@ import HttpError from "../helpers/HttpError.js";
 export const getAllContacts = catchAsync(async (req, res) => {
     const result = await listContacts();
 
-    res.status(200).json({
-        message: "Success!",
-        result,
-    });
+    res.status(200).json(result);
 });
 
 export const getOneContact = catchAsync(async (req, res) => {
@@ -21,10 +18,7 @@ export const getOneContact = catchAsync(async (req, res) => {
         throw HttpError(404, "Not Found");
     };
 
-    res.status(200).json({
-        message: "Success!",
-        result,
-    });
+    res.status(200).json(result);
 });
 
 export const deleteContact = catchAsync(async (req, res) => {
@@ -35,10 +29,7 @@ export const deleteContact = catchAsync(async (req, res) => {
         throw HttpError(404, "Not Found");
     };
 
-    res.status(200).json({
-        message: "Delete Success!",
-        result,
-    });
+    res.status(200).json(result);
 });
 
 export const createContact = catchAsync(async (req, res) => {
@@ -46,10 +37,7 @@ export const createContact = catchAsync(async (req, res) => {
 
     const result = await addContact(name, email, phone);
 
-    res.status(201).json({
-        message: "Successfully Added!",
-        result,
-    });
+    res.status(201).json(result);
 });
 
 export const updateContact = catchAsync(async (req, res) => {
@@ -64,8 +52,5 @@ export const updateContact = catchAsync(async (req, res) => {
         throw HttpError(404, "Not Found");
     };
 
-    res.status(200).json({
-        message: "Successfully Updated!",
-        result,
-    });
+    res.status(200).json(result);
 });
