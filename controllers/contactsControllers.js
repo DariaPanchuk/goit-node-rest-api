@@ -1,6 +1,4 @@
-import { nanoid } from 'nanoid';
-
-import { listContacts, getContactById, removeContact, addContact, updateById } from "../services/contactsServices.js";
+import { listContacts, getContactById, removeContact, addContact, updateById, updateStatusContact } from "../services/contactsServices.js";
 import catchAsync from "../helpers/catchAsync.js";
 import HttpError from "../helpers/HttpError.js";
 
@@ -33,9 +31,7 @@ export const deleteContact = catchAsync(async (req, res) => {
 });
 
 export const createContact = catchAsync(async (req, res) => {
-    const { name, email, phone } = req.body;
-
-    const result = await addContact(name, email, phone);
+    const result = await addContact(req.body);
 
     res.status(201).json(result);
 });
@@ -54,3 +50,14 @@ export const updateContact = catchAsync(async (req, res) => {
 
     res.status(200).json(result);
 });
+
+export const updateStatus = catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const result = await updateStatusContact(id, req.body);
+
+    if (!result) {
+        throw HttpError(404, "Not Found");
+    };
+
+    res.status(200).json(result);
+})
