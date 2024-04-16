@@ -2,14 +2,14 @@ import express from "express";
 
 import validateBody from "../middlewares/validateBody.js";
 import {
-  registerUserSchema,
-  loginUserSchema,
+    registerUserSchema,
+    loginUserSchema,
 } from "../schemas/usersSchemas.js";
 import {
-  registerUser,
-  loginUser,
-  logoutUser,
-  getCurrent,
+    registerUser,
+    loginUser,
+    logoutUser,
+    getCurrent,
 } from "../controllers/usersControllers.js";
 import authenticate from "../middlewares/authMiddlewares.js";
 
