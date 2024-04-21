@@ -38,3 +38,8 @@ export async function deleteToken(id) {
     const result = await User.findByIdAndUpdate(id, { token: "" });
     return result;
 };
+
+export async function addAvatar(id, avatarURL) {
+    const result = await User.findByIdAndUpdate(id, { avatarURL });
+    return result;
+};
