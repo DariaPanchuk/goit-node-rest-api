@@ -43,3 +43,13 @@ export async function addAvatar(id, avatarURL) {
     const result = await User.findByIdAndUpdate(id, { avatarURL });
     return result;
 };
+
+export async function checkVerification(verificationToken) {
+    const result = await User.findOne({ verificationToken });
+    return result;
+};
+
+export async function updateVerify(id, data) {
+    const result = await User.findByIdAndUpdate(id, { data });
+    return result;
+};

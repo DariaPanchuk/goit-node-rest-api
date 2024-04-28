@@ -4,6 +4,7 @@ import validateBody from "../middlewares/validateBody.js";
 import {
     registerUserSchema,
     loginUserSchema,
+    verifySchema,
 } from "../schemas/usersSchemas.js";
 import {
     registerUser,
@@ -11,6 +12,8 @@ import {
     logoutUser,
     getCurrent,
     updateAvatar,
+    verifyUser,
+    reverifyUser,
 } from "../controllers/usersControllers.js";
 import authenticate from "../middlewares/authMiddlewares.js";
 import upload from "../middlewares/upload.js";
@@ -26,5 +29,9 @@ authRouter.post("/logout", authenticate, logoutUser);
 authRouter.get("/current", authenticate, getCurrent);
 
 authRouter.patch("/avatars", authenticate, upload.single("avatar"), updateAvatar);
+
+authRouter.get("/verify/:verificationToken", verifyUser);
+
+authRouter.post("/verify", validateBody(verifySchema), reverifyUser);
 
 export default authRouter;
