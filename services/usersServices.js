@@ -50,6 +50,6 @@ export async function checkVerification(verificationToken) {
 };
 
 export async function updateVerify(id, data) {
-    const result = await User.findByIdAndUpdate(id, { data });
+    const result = await User.findByIdAndUpdate(id, data);
     return result;
 };
